@@ -5,110 +5,169 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wilden Wiki</title>
   <link rel="icon" type="image/png" href="WILDEN_LOGO_FULL_QUALITY_OFFICIAL(1).png">
+
   <style>
-    :root {
-      --bg: #08130d;
-      --bg2: #0f2417;
-      --panel: rgba(18, 38, 25, 0.92);
-      --panel2: rgba(25, 55, 35, 0.88);
-      --green: #67ff9a;
-      --green2: #2fd66f;
-      --gold: #ffd166;
-      --blue: #70d6ff;
-      --red: #ff6b6b;
-      --text: #f3fff7;
-      --muted: #b8d7c1;
-      --border: rgba(103, 255, 154, 0.24);
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    :root{
+      --bg:#06130b;
+      --bg2:#0b2413;
+      --panel:rgba(13,35,20,.92);
+      --panel2:rgba(18,50,28,.9);
+      --line:rgba(124,255,130,.25);
+      --text:#f4fff6;
+      --muted:#b9d8c0;
+      --green:#87ff3c;
+      --green2:#31d46b;
+      --gold:#ffd65a;
+      --blue:#58d7ff;
+      --red:#ff6b6b;
+      --shadow:0 18px 55px rgba(0,0,0,.45);
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      color:var(--text);
       background:
-        radial-gradient(circle at top left, rgba(103, 255, 154, 0.16), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(112, 214, 255, 0.12), transparent 35%),
-        linear-gradient(135deg, var(--bg), #050905 55%, var(--bg2));
-      min-height: 100vh;
+        radial-gradient(circle at top left,rgba(135,255,60,.16),transparent 28%),
+        radial-gradient(circle at bottom right,rgba(88,215,255,.12),transparent 35%),
+        linear-gradient(135deg,var(--bg),#020704 60%,var(--bg2));
+      min-height:100vh;
     }
-    a { color: var(--green); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .site-notice {
-      position: sticky; top: 0; z-index: 20;
-      background: linear-gradient(90deg, rgba(47, 214, 111, 0.95), rgba(255, 209, 102, 0.95));
-      color: #061008; padding: 12px 18px; text-align: center; font-weight: 800;
-      box-shadow: var(--shadow);
+
+    a{color:var(--green);text-decoration:none}
+    a:hover{text-decoration:underline}
+    code{background:rgba(0,0,0,.35);color:var(--gold);padding:3px 7px;border-radius:8px}
+
+    .notice-bar{
+      width:100%;
+      background:linear-gradient(90deg,#37d06c,#e4d05a);
+      color:#031107;
+      font-weight:900;
+      text-align:center;
+      padding:12px 18px;
+      position:sticky;
+      top:0;
+      z-index:50;
+      box-shadow:0 6px 18px rgba(0,0,0,.35);
     }
-    .layout { display: grid; grid-template-columns: 280px 1fr; max-width: 1500px; margin: 0 auto; min-height: 100vh; }
-    aside { position: sticky; top: 48px; height: calc(100vh - 48px); overflow-y: auto; padding: 22px 16px; border-right: 1px solid var(--border); background: rgba(6, 14, 9, 0.72); backdrop-filter: blur(16px); }
-    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding: 14px; border: 1px solid var(--border); border-radius: 18px; background: var(--panel); }
-    .brand img { width: 52px; height: 52px; object-fit: contain; border-radius: 12px; }
-    .brand h1 { font-size: 1.1rem; margin: 0; }
-    .brand p { font-size: 0.8rem; margin: 3px 0 0; color: var(--muted); }
-    nav h3 { margin: 18px 10px 8px; font-size: 0.78rem; letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase; }
-    nav a { display: block; padding: 10px 12px; margin: 4px 0; border-radius: 12px; color: var(--text); border: 1px solid transparent; font-size: 0.93rem; }
-    nav a:hover { text-decoration: none; background: rgba(103, 255, 154, 0.1); border-color: var(--border); }
-    main { padding: 32px; }
-    section.page { margin-bottom: 34px; padding: 28px; border: 1px solid var(--border); border-radius: 26px; background: var(--panel); box-shadow: var(--shadow); }
-    .hero {
-      padding: 60px 40px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(103, 255, 154, 0.22), rgba(112, 214, 255, 0.12)), rgba(18, 38, 25, 0.95);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      margin-bottom: 34px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 300px;
+
+    .layout{
+      display:grid;
+      grid-template-columns:280px minmax(0,1fr);
+      max-width:1500px;
+      margin:0 auto;
+      width:100%;
     }
-    .hero::before { content: ""; position: absolute; inset: 0; background: url('wilden_bg(1).png') center/cover no-repeat; opacity: .18; pointer-events: none; }
-    .hero > * { position: relative; z-index: 1; }
-    .hero-logo {
-      max-width: 420px;
-      width: 100%;
-      display: block;
-      margin: 0 auto 20px auto;
+
+    .sidebar{
+      position:sticky;
+      top:45px;
+      height:calc(100vh - 45px);
+      overflow-y:auto;
+      padding:20px 16px;
+      border-right:1px solid var(--line);
+      background:rgba(3,15,8,.75);
+      backdrop-filter:blur(12px);
     }
-    .hero h1, section.page h2 { margin-top: 0; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; }
-    section.page h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
-    h3 { color: var(--green); margin-top: 24px; }
-    h4 { color: var(--gold); margin-bottom: 8px; }
-    p, li { line-height: 1.65; color: var(--text); }
-    .muted { color: var(--muted); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 18px; }
-    .card { border: 1px solid var(--border); border-radius: 20px; padding: 18px; background: var(--panel2); }
-    .card h3, .card h4 { margin-top: 0; }
-    .pill { display: inline-block; padding: 7px 10px; margin: 4px 4px 4px 0; border-radius: 999px; background: rgba(103, 255, 154, 0.12); border: 1px solid var(--border); color: var(--text); font-size: 0.88rem; }
-    code { background: rgba(0,0,0,0.34); padding: 3px 7px; border-radius: 8px; color: var(--gold); }
-    pre { overflow-x: auto; padding: 18px; border-radius: 18px; border: 1px solid var(--border); background: rgba(0,0,0,0.35); color: var(--text); }
-    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; margin: 18px 0; }
-    th, td { padding: 14px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
-    th { color: var(--gold); background: rgba(0,0,0,0.24); }
-    .notice { border-left: 5px solid var(--gold); background: rgba(255, 209, 102, 0.1); padding: 14px 16px; border-radius: 14px; margin: 18px 0; }
-    .danger { border-left-color: var(--red); background: rgba(255, 107, 107, 0.1); }
-    .success { border-left-color: var(--green); background: rgba(103, 255, 154, 0.1); }
-    .footer-nav { margin-top: 26px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted); }
-    .footer-nav a { margin-right: 8px; }
-    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } aside { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border); } main { padding: 18px; } section.page, .hero { padding: 22px; } }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px;
+      margin-bottom:20px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:var(--panel);
+    }
+    .brand img{width:54px;height:54px;object-fit:contain;flex:0 0 auto}
+    .brand h1{font-size:1.1rem;margin:0 0 4px}
+    .brand p{margin:0;color:var(--muted);font-size:.85rem;line-height:1.35}
+
+    nav h3{
+      color:var(--gold);
+      margin:18px 10px 8px;
+      font-size:.78rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    nav a{
+      display:block;
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid transparent;
+      margin:4px 0;
+      font-size:.95rem;
+    }
+    nav a:hover{background:rgba(135,255,60,.1);border-color:var(--line);text-decoration:none}
+
+    main{padding:28px;min-width:0}
+
+    .hero,.page{
+      border:1px solid var(--line);
+      background:var(--panel);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+      overflow:hidden;
+    }
+
+    .hero{
+      min-height:420px;
+      padding:46px;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:
+        linear-gradient(rgba(6,19,11,.55),rgba(6,19,11,.92)),
+        url('wilden_bg(1).png') center/cover no-repeat,
+        var(--panel);
+    }
+    .hero-logo{width:min(560px,90%);height:auto;margin:0 0 24px;display:block;filter:drop-shadow(0 18px 25px rgba(0,0,0,.5))}
+    .hero h1{font-size:clamp(2.4rem,6vw,5rem);line-height:.95;margin:0 0 16px}
+    .hero p{max-width:760px;font-size:1.1rem;color:#edfff0;margin:0 0 20px;line-height:1.65}
+
+    .page{padding:28px}
+    .page h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1;margin:0 0 18px}
+    h3{color:var(--green);margin:24px 0 10px}
+    h4{color:var(--gold);margin:18px 0 8px}
+    p,li{line-height:1.65}
+    .muted{color:var(--muted)}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:18px 0}
+    .card{background:var(--panel2);border:1px solid var(--line);border-radius:18px;padding:18px}
+    .card h3,.card h4{margin-top:0}
+    .pill{display:inline-block;margin:4px 6px 4px 0;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(135,255,60,.12);color:var(--text);font-weight:700}
+
+    table{width:100%;border-collapse:collapse;margin:16px 0;border-radius:16px;overflow:hidden;background:rgba(0,0,0,.16)}
+    th,td{text-align:left;vertical-align:top;padding:13px 14px;border-bottom:1px solid var(--line)}
+    th{color:var(--gold);background:rgba(0,0,0,.28)}
+
+    .info{border-left:5px solid var(--gold);background:rgba(255,214,90,.1);padding:14px 16px;border-radius:14px;margin:16px 0}
+    .danger{border-left-color:var(--red);background:rgba(255,107,107,.1)}
+    .success{border-left-color:var(--green);background:rgba(135,255,60,.1)}
+    .footer-nav{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted)}
+
+    @media(max-width:900px){
+      .layout{grid-template-columns:1fr}
+      .sidebar{position:relative;top:0;height:auto;border-right:0;border-bottom:1px solid var(--line)}
+      main{padding:16px}
+      .hero,.page{border-radius:20px}
+      .hero{padding:28px;min-height:360px}
+    }
   </style>
 </head>
 <body>
-  <div class="site-notice">📢 Wilden Wiki Update: New commands, AuraSkills, and Recommended Player Warps have been added!</div>
+  <div class="notice-bar">📢 Wilden Wiki Update: New commands, AuraSkills, and Recommended Player Warps have been added!</div>
 
   <div class="layout">
-    <aside>
+    <aside class="sidebar">
       <div class="brand">
-        <img src="WILDEN_LOGO_FULL_QUALITY_OFFICIAL.png" style="width:46px;height:46px;border-radius:12px;">
-        <div>
-          <h1>Wilden Wiki</h1>
-          <p>Community-made player guide</p>
-        </div>
-      </div>
+        <img src="WILDEN_LOGO_FULL_QUALITY_OFFICIAL(1).png" alt="Wilden Logo">
         <div>
           <h1>Wilden Wiki</h1>
           <p>Community-made player guide</p>
@@ -138,12 +197,14 @@
 
     <main>
       <section id="home" class="hero">
-        <img src="WILDEN_LOGO_FULL_QUALITY_OFFICIAL(1).png" class="hero-logo">
+        <img class="hero-logo" src="WILDEN_BANNER_NO_BG(1).png" alt="Wilden.fun">
         <h1>Wilden Wiki</h1>
-        <p>Welcome to the Wilden Wiki, your complete guide to the server. Use the sidebar to navigate through all pages.</p>
-        <div class="pill">Java & Bedrock</div>
-        <div class="pill">Commands</div>
-        <div class="pill">Progression Systems</div>
+        <p>Your complete community-made guide for Wilden. Learn commands, server systems, progression, claims, fishing, events, and recommended places to visit.</p>
+        <div>
+          <span class="pill">Java & Bedrock</span>
+          <span class="pill">Player Guide</span>
+          <span class="pill">Updated Monthly</span>
+        </div>
       </section>
 
       <section id="join" class="page">
@@ -151,49 +212,48 @@
         <div class="grid">
           <div class="card"><h3>Server IP</h3><p><code>play.wilden.fun</code></p></div>
           <div class="card"><h3>Bedrock Port</h3><p><code>19132</code></p></div>
-          <div class="card"><h3>Discord</h3><p><a href="https://discord.gg/wilden">https://discord.gg/wilden</a></p></div>
+          <div class="card"><h3>Discord</h3><p><a href="https://discord.gg/wilden">discord.gg/wilden</a></p></div>
         </div>
         <h3>📱 Bedrock Edition</h3>
-        <ol><li>Open Minecraft Bedrock Edition.</li><li>Go to <strong>Play → Servers</strong>.</li><li>Select <strong>Add Server</strong>.</li><li>Use address <code>play.wilden.fun</code> and port <code>19132</code>.</li><li>Save and join.</li></ol>
+        <ol><li>Open Minecraft Bedrock Edition.</li><li>Go to Play → Servers.</li><li>Select Add Server.</li><li>Use address <code>play.wilden.fun</code> and port <code>19132</code>.</li><li>Save and join.</li></ol>
         <h3>💻 Java Edition</h3>
-        <ol><li>Open Minecraft Java Edition.</li><li>Go to <strong>Multiplayer</strong>.</li><li>Click <strong>Add Server</strong>.</li><li>Use server address <code>play.wilden.fun</code>.</li><li>Join the server.</li></ol>
+        <ol><li>Open Minecraft Java Edition.</li><li>Go to Multiplayer.</li><li>Click Add Server.</li><li>Use <code>play.wilden.fun</code>.</li><li>Join the server.</li></ol>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#commands">Commands</a> • <a href="#rules">Rules</a></div>
       </section>
 
       <section id="commands" class="page">
         <h2>⚙️ Commands</h2>
-        <p>Wilden features many commands that give players access to core systems, progression, economy tools, and server features.</p>
+        <p>Wilden features many commands for systems, progression, economy, warps, and quality-of-life features.</p>
         <table>
           <tr><th>Command</th><th>Description</th></tr>
           <tr><td><code>/wild</code></td><td>Teleport to a random wilderness location.</td></tr>
           <tr><td><code>/branches</code></td><td>Open the Branches progression menu.</td></tr>
-          <tr><td><code>/claim</code></td><td>Claim land to protect builds and items.</td></tr>
-          <tr><td><code>/claimsguide</code></td><td>View claim help and command list.</td></tr>
-          <tr><td><code>/vote</code></td><td>Vote for the server and earn rewards.</td></tr>
+          <tr><td><code>/claim</code></td><td>Claim land to protect builds.</td></tr>
+          <tr><td><code>/vote</code></td><td>Vote for rewards.</td></tr>
           <tr><td><code>/rewards</code></td><td>Claim available rewards.</td></tr>
           <tr><td><code>/warp afk</code></td><td>Teleport to the AFK area.</td></tr>
           <tr><td><code>/map</code></td><td>Open the server map.</td></tr>
-          <tr><td><code>/draw</code></td><td>Use the drawing feature.</td></tr>
+          <tr><td><code>/draw</code></td><td>Use drawing features.</td></tr>
           <tr><td><code>/hidearmor</code></td><td>Toggle armor visibility.</td></tr>
-          <tr><td><code>/coinflip</code></td><td>Start or use coinflip.</td></tr>
+          <tr><td><code>/coinflip</code></td><td>Use coinflip.</td></tr>
           <tr><td><code>/cf</code></td><td>Redirects to <code>/coinflip</code>.</td></tr>
-          <tr><td><code>/repair all</code></td><td>Repairs all items. Wilden rank only.</td></tr>
+          <tr><td><code>/repair all</code></td><td>Repair all items. Wilden rank only.</td></tr>
           <tr><td><code>/shop</code></td><td>Open the server shop.</td></tr>
           <tr><td><code>/ah</code></td><td>Open the Auction House.</td></tr>
-          <tr><td><code>/sellgui</code></td><td>Open a GUI to sell items.</td></tr>
-          <tr><td><code>/skills</code></td><td>Open AuraSkills menu.</td></tr>
-          <tr><td><code>/jobs</code></td><td>Earn money through jobs.</td></tr>
-          <tr><td><code>/events</code></td><td>Access server events.</td></tr>
-          <tr><td><code>/bal</code></td><td>Check your gold balance.</td></tr>
-          <tr><td><code>/gemshop</code></td><td>Open the premium gem shop.</td></tr>
+          <tr><td><code>/sellgui</code></td><td>Open the sell GUI.</td></tr>
+          <tr><td><code>/skills</code></td><td>Open AuraSkills.</td></tr>
+          <tr><td><code>/jobs</code></td><td>Join jobs to earn gold.</td></tr>
+          <tr><td><code>/events</code></td><td>Access events.</td></tr>
+          <tr><td><code>/bal</code></td><td>Check balance.</td></tr>
+          <tr><td><code>/gemshop</code></td><td>Open the gem shop.</td></tr>
           <tr><td><code>/warp crates</code></td><td>Teleport to crates.</td></tr>
           <tr><td><code>/daily</code></td><td>Claim daily reward.</td></tr>
-          <tr><td><code>/levels</code></td><td>View level progression.</td></tr>
+          <tr><td><code>/levels</code></td><td>View levels.</td></tr>
           <tr><td><code>/warps</code></td><td>Browse server warps.</td></tr>
           <tr><td><code>/rtp</code></td><td>Random teleport.</td></tr>
           <tr><td><code>/ignore</code></td><td>Ignore a player.</td></tr>
-          <tr><td><code>/pw</code></td><td>Player warps menu.</td></tr>
-          <tr><td><code>/trade</code></td><td>Trade with another player.</td></tr>
+          <tr><td><code>/pw</code></td><td>Open player warps.</td></tr>
+          <tr><td><code>/trade</code></td><td>Trade with players.</td></tr>
           <tr><td><code>/orders</code></td><td>View orders.</td></tr>
           <tr><td><code>/settings</code></td><td>Open player settings.</td></tr>
           <tr><td><code>/sit</code></td><td>Sit anywhere.</td></tr>
@@ -205,99 +265,81 @@
 
       <section id="claims" class="page">
         <h2>🏡 Land Claims</h2>
-        <p>Land Claims allow players to protect builds, items, and progress. Everything inside a claim is protected and only accessible to players you trust.</p>
-        <h3>🚀 Getting Started</h3>
-        <ul><li>Hold a golden shovel.</li><li>Right-click a block to set the first corner.</li><li>Right-click another block to set the second corner.</li><li>Your land is now protected.</li></ul>
-        <h3>📦 Claim Blocks</h3>
-        <ul><li>Earn 125 claim blocks per hour of playtime.</li><li>Earn 125 claim blocks per vote.</li><li>Buy blocks with <code>/buyclaimblocks</code> at $25 per block.</li><li>Claim blocks are fully refunded when resizing or deleting a claim.</li></ul>
-        <h3>⚙️ Useful Commands</h3>
+        <p>Land Claims protect your builds, items, and progress. Everything inside your claim is protected and only accessible to players you trust.</p>
+        <h3>Getting Started</h3>
+        <ul><li>Hold a golden shovel.</li><li>Right-click a block for the first corner.</li><li>Right-click another block for the second corner.</li><li>Your land is now protected.</li></ul>
+        <h3>Claim Blocks</h3>
+        <ul><li>125 claim blocks per hour of playtime.</li><li>125 claim blocks per vote.</li><li><code>/buyclaimblocks</code> costs $25 per block.</li><li>Claim blocks are refunded when resizing or deleting claims.</li></ul>
+        <h3>Commands</h3>
         <table>
           <tr><th>Command</th><th>Use</th></tr>
           <tr><td><code>/claimsguide</code></td><td>View claim help.</td></tr>
           <tr><td><code>/buyclaimblocks</code></td><td>Buy more claim blocks.</td></tr>
-          <tr><td><code>/abandonclaim</code></td><td>Delete the claim you are standing in.</td></tr>
+          <tr><td><code>/abandonclaim</code></td><td>Delete current claim.</td></tr>
           <tr><td><code>/trust [player]</code></td><td>Allow building access.</td></tr>
           <tr><td><code>/untrust [player]</code></td><td>Remove access.</td></tr>
-          <tr><td><code>/accesstrust [player]</code></td><td>Allow buttons and doors only.</td></tr>
-          <tr><td><code>/containertrust [player]</code></td><td>Allow chest/container access only.</td></tr>
+          <tr><td><code>/accesstrust [player]</code></td><td>Allow doors/buttons only.</td></tr>
+          <tr><td><code>/containertrust [player]</code></td><td>Allow chest access only.</td></tr>
           <tr><td><code>/trustlist</code></td><td>View trusted players.</td></tr>
-          <tr><td><code>/banfromclaim [player]</code></td><td>Block a player from entering your claim.</td></tr>
-          <tr><td><code>/unbanfromclaim [player]</code></td><td>Allow a banned player to enter again.</td></tr>
+          <tr><td><code>/banfromclaim [player]</code></td><td>Block a player from entering.</td></tr>
+          <tr><td><code>/unbanfromclaim [player]</code></td><td>Allow a banned player again.</td></tr>
         </table>
-        <div class="notice success">Server owners Length and Surge use this system to help keep gameplay fair and protected.</div>
+        <div class="info success">Length and Surge use this system to help keep gameplay fair and protected.</div>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#commands">Commands</a> • <a href="#rules">Rules</a></div>
       </section>
 
       <section id="branches" class="page">
         <h2>🌿 Branches</h2>
-        <p>Branches is Wilden's custom progression system. When first joining, players choose a branch with unique passive perks and unlockable upgrades.</p>
+        <p>Branches is Wilden’s custom progression system. Choose a branch with unique passive perks and unlock upgrades as you progress.</p>
         <div class="grid">
-          <div class="card"><h3>🌊 Tides</h3><p>Built for water players.</p><ul><li>20% faster swim speed</li><li>Water breathing</li><li>Underwater visibility</li><li>Bonus fishing luck</li></ul></div>
-          <div class="card"><h3>🌿 Roots</h3><p>Built for nature biomes.</p><ul><li>15% faster crop growth</li><li>Natural biome ore chances</li></ul></div>
-          <div class="card"><h3>🔥 Ember</h3><p>Built for combat players.</p><ul><li>Fire aura</li><li>50% fire damage reduction</li><li>30% Fire Aspect chance</li></ul></div>
-          <div class="card"><h3>🌾 Verdant</h3><p>Built for farmers and miners.</p><ul><li>10% faster crop growth</li><li>Extra crop drops</li><li>Extra ore drop chance</li></ul></div>
+          <div class="card"><h3>🌊 Tides</h3><p>Water-focused branch with faster swimming, water breathing, underwater visibility, and fishing luck.</p></div>
+          <div class="card"><h3>🌿 Roots</h3><p>Nature-focused branch with faster crop growth and ore chances in natural biomes.</p></div>
+          <div class="card"><h3>🔥 Ember</h3><p>Combat-focused branch with fire aura, fire resistance, and fire aspect chances.</p></div>
+          <div class="card"><h3>🌾 Verdant</h3><p>Farming and mining branch with crop bonuses and extra ore chances.</p></div>
         </div>
-        <h3>🔄 Switching Branches</h3>
-        <p>Use <code>/branches switch</code>. The first switch is free. The second costs $100,000, and the cost doubles with each switch. All upgrades are permanently lost and non-refundable when switching.</p>
+        <p>Use <code>/branches switch</code> to switch branches. The first switch is free. The second costs $100,000 and doubles each time. Upgrades are lost and non-refundable.</p>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#auraskills">AuraSkills</a> • <a href="#commands">Commands</a></div>
       </section>
 
       <section id="pyrofishing" class="page">
         <h2>🎣 PyroFishing</h2>
-        <p>PyroFishing transforms vanilla fishing into a full progression system with custom fish, skills, augments, deliveries, and totems.</p>
+        <p>PyroFishing turns vanilla fishing into a full progression system with custom fish, skills, augments, deliveries, entropy, and totems.</p>
         <div class="grid">
-          <div class="card"><h3>📊 Fish Menu</h3><p>Use <code>/fish menu</code> to open your main fishing hub.</p></div>
-          <div class="card"><h3>🫧 Entropy</h3><p>Earn entropy by gutting fish. Use it for augments, totems, and skill refunds.</p></div>
-          <div class="card"><h3>🐟 Fish Shop</h3><p>Use <code>/fish shop</code> to sell custom fish.</p></div>
-          <div class="card"><h3>📦 Deliveries</h3><p>Use <code>/fish deliveries</code> to complete fishing tasks for rewards.</p></div>
-          <div class="card"><h3>📖 Fish Codex</h3><p>Use <code>/fish codex</code> to view custom fish and progress.</p></div>
-          <div class="card"><h3>🧪 Gutting</h3><p>Use <code>/fish gut</code> to turn fish into entropy.</p></div>
-          <div class="card"><h3>⚖️ Fish Scales</h3><p>Use <code>/fish scales</code> to affect sell values.</p></div>
-          <div class="card"><h3>🎒 Fish Bag</h3><p>Use <code>/fish bag</code> for custom fish storage.</p></div>
-          <div class="card"><h3>✨ Augments</h3><p>Use <code>/fish augments</code> to view recipes and <code>/fish augment</code> to apply them.</p></div>
-          <div class="card"><h3>🏛️ Fishing Totem</h3><p>Build and activate the totem to unlock powerful fishing upgrades.</p></div>
+          <div class="card"><h3>/fish menu</h3><p>Main fishing hub.</p></div>
+          <div class="card"><h3>Entropy</h3><p>Fishing currency earned by gutting fish.</p></div>
+          <div class="card"><h3>/fish shop</h3><p>Sell custom fish.</p></div>
+          <div class="card"><h3>/fish deliveries</h3><p>Complete fishing tasks.</p></div>
+          <div class="card"><h3>/fish codex</h3><p>View custom fish.</p></div>
+          <div class="card"><h3>/fish gut</h3><p>Turn fish into entropy.</p></div>
+          <div class="card"><h3>/fish bag</h3><p>Store custom fish.</p></div>
+          <div class="card"><h3>Fishing Totem</h3><p>Build and activate the totem for upgrades.</p></div>
         </div>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#branches">Branches</a> • <a href="#commands">Commands</a></div>
       </section>
 
       <section id="auraskills" class="page">
         <h2>📈 AuraSkills</h2>
-        <p>AuraSkills rewards players for playing naturally. Actions like mining, farming, and combat give XP, level up skills, and unlock rewards.</p>
-        <h3>🧠 Skills & XP</h3>
-        <ul><li>Mining XP from mining.</li><li>Farming XP from farming.</li><li>Combat XP from fighting.</li></ul>
-        <h3>📊 Viewing Skills</h3>
-        <p>Use <code>/skills</code> to open the main skill menu. Skill-specific commands like <code>/mining</code>, <code>/farming</code>, and <code>/combat</code> can show individual skill details.</p>
-        <h3>🎁 Rewards</h3>
-        <p>Rewards can include stat increases, commands, items, money, health, mana, wisdom, strength, and other bonuses.</p>
-        <h3>⚙️ Commands Summary</h3>
-        <ul><li><code>/skills</code> — Open main skill menu.</li><li><code>/mining</code>, <code>/farming</code>, <code>/combat</code> — View specific skills.</li><li><code>/stats</code> — View stats if enabled.</li><li><code>/skillpoints</code> — Manage stat points if enabled.</li></ul>
+        <p>AuraSkills rewards players for playing naturally. Mining, farming, combat, and other actions give XP, levels, stats, and rewards.</p>
+        <h3>Commands</h3>
+        <ul><li><code>/skills</code> — Main skills menu.</li><li><code>/mining</code>, <code>/farming</code>, <code>/combat</code> — Skill menus.</li><li><code>/stats</code> — Stats if enabled.</li><li><code>/skillpoints</code> — Manage stat points if enabled.</li></ul>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#commands">Commands</a> • <a href="#branches">Branches</a></div>
       </section>
 
       <section id="events" class="page">
         <h2>👑 Custom Events System</h2>
-        <p>Wilden features a unique 48-hour event cycle where the community works together to influence what happens on the server.</p>
+        <p>Wilden has a 48-hour event cycle where players use gems to influence good and bad events.</p>
         <div class="grid">
-          <div class="card"><h3>🟢 Good Events</h3><p>75% chance. The community contributes gems to extend the duration.</p></div>
-          <div class="card"><h3>🔴 Bad Events</h3><p>25% chance. The community contributes gems to stop the event early.</p></div>
-          <div class="card"><h3>🧙 Wizard NPC</h3><p>Visit the Wizard at spawn to view timers, contribute gems, view leaderboards, and speed up countdowns.</p></div>
+          <div class="card"><h3>Good Events</h3><p>75% chance. Contribute gems to extend them.</p></div>
+          <div class="card"><h3>Bad Events</h3><p>25% chance. Contribute gems to stop them early.</p></div>
+          <div class="card"><h3>Wizard NPC</h3><p>View timers, contribute gems, speed up countdowns, and check leaderboards.</p></div>
         </div>
-        <h3>✨ Good Events</h3>
-        <ul><li>Golden Hour — Ore drops doubled.</li><li>Bountiful Harvest — Mob drops doubled.</li><li>Fertile Rain — Crops grow 50% faster.</li><li>Wildlife Invasion — Passive animals spawn in the wild.</li><li>Lucky Seed — Next crop harvested gives a rare item.</li></ul>
-        <h3>⚠️ Bad Events</h3>
-        <ul><li>Frostbite — Cold biome damage.</li><li>Hunger Curse — Hunger drains faster.</li><li>Toxic Rain — Players outside take damage.</li></ul>
-        <h3>⚡ Speed-Up Costs</h3>
-        <p>1st use: 100 gems • 2nd: 200 gems • 3rd: 400 gems • 4th: 800 gems • Max: 8x speed-up. Speed-ups are not refunded.</p>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#commands">Commands</a> • <a href="#warps">Player Warps</a></div>
       </section>
 
       <section id="warps" class="page">
         <h2>🏪 Recommended Player Warps</h2>
-        <p>This page highlights the best shops, builds, farms, and creations on Wilden. Staff can recommend places for players to visit using <code>/pw go [shop name]</code>.</p>
-        <div class="notice">📅 Last Updated: April 2026<br>🔄 This list should be updated every month.</div>
-
-        <h3>⭐ Featured Warps (Current Month)</h3>
-
+        <p>Recommended Player Warps highlight staff-recommended shops, builds, farms, and creations. Use <code>/pw go [shop name]</code> to visit.</p>
+        <div class="info">📅 Last Updated: April 2026<br>🔄 This list updates every month.</div>
         <div class="card">
           <h3>🛒 Wilden Mall</h3>
           <p><strong>👤 Owner:</strong> KumaBear__</p>
@@ -306,46 +348,35 @@
           <p><strong>⭐ Highlights:</strong> Variety of shops, easy navigation, great for buying and selling.</p>
           <p><strong>📅 Added:</strong> April 2026</p>
         </div>
-
-        <h3>📌 Requirements</h3>
-        <ul>
-          <li>Must be useful, active, or well-built.</li>
-          <li>Must follow server rules.</li>
-          <li>May be rotated or removed if inactive.</li>
-          <li>Not all player warps will be featured.</li>
-        </ul>
-
+        <h3>Requirements</h3>
+        <ul><li>Must be useful, active, or well-built.</li><li>Must follow server rules.</li><li>May be rotated or removed if inactive.</li><li>Not all player warps are featured.</li></ul>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#commands">Commands</a> • <a href="#rules">Rules</a></div>
       </section>
 
       <section id="owners" class="page">
         <h2>👑 Server Owners</h2>
-        <p>The Wilden Minecraft server is owned and managed by <strong>Length</strong> and <strong>Surge</strong>. They share the same responsibilities and work together as co-owners.</p>
-        <h3>🛠️ Responsibilities</h3>
-        <ul><li>Developing and updating server features.</li><li>Managing core gameplay systems.</li><li>Maintaining stability and performance.</li><li>Making major administrative decisions.</li><li>Reviewing community feedback.</li><li>Planning future updates.</li></ul>
-        <div class="notice success">Length and Surge have equal authority and share all major server responsibilities.</div>
+        <p>Wilden is owned and managed by <strong>Length</strong> and <strong>Surge</strong>. They share responsibilities and work together as co-owners.</p>
+        <div class="info success">Length and Surge have equal authority and share all major server responsibilities.</div>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#rules">Rules</a> • <a href="#socials">Social Media</a></div>
       </section>
 
       <section id="rules" class="page">
         <h2>⚖️ Wilden Server Rules</h2>
-        <h3>🎮 In-Game Rules</h3>
-        <ul><li>Play fairly. Cheats, hacked clients, and unfair mods are not allowed.</li><li>Do not abuse bugs, glitches, or unintended mechanics.</li><li>Punishment evasion and alternate accounts are prohibited.</li><li>Follow staff instructions.</li><li>Treat players with respect.</li><li>Keep chat appropriate and family-friendly.</li><li>No X-ray, macros, autoclickers, bots, scripts, or automation.</li><li>No auto-fishing or unfair AFK farming methods.</li><li>No duplication glitches or exploit abuse.</li><li>No spamming or advertising.</li><li>Do not create lag machines or crash attempts.</li><li>Do not interfere with protected areas.</li><li>Skins and usernames must be appropriate.</li></ul>
-        <h3>💬 Discord Rules</h3>
-        <ul><li>Follow Discord Terms of Service.</li><li>Do not ping staff unless necessary.</li><li>Be respectful.</li><li>No racism, discrimination, hate speech, or harassment.</li><li>Avoid NSFW, self-harm, drugs, or controversial topics.</li><li>No spamming, flooding, advertising, scamming, phishing, or trolling.</li><li>Keep usernames, avatars, and statuses appropriate.</li><li>Do not share personal information.</li><li>No threats of DDoS, doxxing, or raids.</li><li>Do not use alt accounts to avoid punishments.</li></ul>
-        <div class="notice danger">Rules are subject to change with or without notice.</div>
+        <h3>In-Game Rules</h3>
+        <ul><li>No cheats, hacked clients, unfair mods, X-ray, macros, autoclickers, bots, scripts, or automation.</li><li>Do not abuse bugs, glitches, or unintended mechanics.</li><li>No punishment evasion or alt abuse.</li><li>Follow staff instructions.</li><li>Respect all players.</li><li>Keep chat family-friendly.</li><li>No duplication glitches, lag machines, crashing, spamming, or advertising.</li><li>Do not interfere with protected areas.</li><li>Skins and usernames must be appropriate.</li></ul>
+        <h3>Discord Rules</h3>
+        <ul><li>Follow Discord Terms of Service.</li><li>Do not ping staff unless necessary.</li><li>No hate speech, harassment, NSFW, scams, phishing, threats, doxxing, raids, or alt punishment evasion.</li><li>Keep usernames, avatars, and statuses appropriate.</li></ul>
+        <div class="info danger">Rules are subject to change with or without notice.</div>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#commands">Commands</a> • <a href="#join">How to Join</a></div>
       </section>
 
       <section id="socials" class="page">
         <h2>📱 Wilden Official Social Media</h2>
-        <p>Stay connected with Wilden and keep up with updates, content, and community highlights.</p>
         <div class="grid">
           <div class="card"><h3>🎵 TikTok</h3><p><a href="https://www.tiktok.com/@wildenserver">@wildenserver</a></p></div>
           <div class="card"><h3>📸 Instagram</h3><p><a href="https://www.instagram.com/wilden.fun">@wilden.fun</a></p></div>
           <div class="card"><h3>▶️ YouTube</h3><p><a href="https://www.youtube.com/@wildenserver">@wildenserver</a></p></div>
         </div>
-        <div class="notice">Only the links listed here should be considered official.</div>
         <div class="footer-nav"><a href="#home">Main Page</a> • <a href="#join">How to Join</a> • <a href="#owners">Server Owners</a></div>
       </section>
     </main>
