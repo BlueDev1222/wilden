@@ -52,10 +52,28 @@
     nav a:hover { text-decoration: none; background: rgba(103, 255, 154, 0.1); border-color: var(--border); }
     main { padding: 32px; }
     section.page { margin-bottom: 34px; padding: 28px; border: 1px solid var(--border); border-radius: 26px; background: var(--panel); box-shadow: var(--shadow); }
-    .hero { padding: 42px; border-radius: 30px; background: linear-gradient(135deg, rgba(103, 255, 154, 0.22), rgba(112, 214, 255, 0.12)), rgba(18, 38, 25, 0.95); border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 34px; position: relative; overflow: hidden; }
+    .hero {
+      padding: 60px 40px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(103, 255, 154, 0.22), rgba(112, 214, 255, 0.12)), rgba(18, 38, 25, 0.95);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      margin-bottom: 34px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 300px;
+    }
     .hero::before { content: ""; position: absolute; inset: 0; background: url('wilden_bg(1).png') center/cover no-repeat; opacity: .18; pointer-events: none; }
     .hero > * { position: relative; z-index: 1; }
-    .hero-logo { max-width: 420px; width: 100%; display: block; margin-bottom: 20px; }
+    .hero-logo {
+      max-width: 420px;
+      width: 100%;
+      display: block;
+      margin: 0 auto 20px auto;
+    }
     .hero h1, section.page h2 { margin-top: 0; font-size: clamp(2rem, 5vw, 4rem); line-height: 1; }
     section.page h2 { font-size: clamp(1.8rem, 4vw, 3rem); }
     h3 { color: var(--green); margin-top: 24px; }
